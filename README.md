@@ -45,19 +45,19 @@ O documento detalha a criação da VM, a instalação do Windows Server 2022 e s
 
 Esta etapa detalha a criação de Unidades Organizacionais (OUs) para simular os departamentos da empresa, seguida da criação de usuários de teste e grupos de segurança. O documento também demonstra tarefas diárias de Help Desk, como o reset de senhas e o desbloqueio de contas de usuários.
 
-![Criação de Usuários no ADUC](img/ou_user_aduc.png)
+![Criação de Usuários no ADUC](https://raw.githubusercontent.com/yshizw/homelab-active-directory/main/img/ou_user_aduc.png)
 
 ### [3.3. Compartilhamento de Pastas e Permissões (File Server) 📄➡️](docs/03-Compartilhamento-de-Pastas.md)
 
 Documenta a criação de um compartilhamento de rede central (a pasta Setores), com a permissão de compartilhamento configurada para Usuários Autenticados (Authenticated Users). Em seguida, demonstra a aplicação de permissões NTFS granulares: Leitura na pasta-pai (o "corredor") e Modificar na subpasta Financeiro, garantindo que cada departamento acesse apenas sua própria área.
 
-![Configuração de Permissões NTFS](img/folder_permi.png)
+![Configuração de Permissões NTFS](https://raw.githubusercontent.com/yshizw/homelab-active-directory/main/img/folder_permi.png)
 
 ### [3.4. Políticas de Grupo (GPO) 📄➡️](docs/04-Politicas-de-Grupo.md)
 
 Detalha a implementação de múltiplas Políticas de Grupo (GPOs) para reforçar a segurança e automatizar o ambiente. Isso inclui a configuração das políticas de senha e bloqueio (Default Domain Policy), o mapeamento automático de unidades de rede para departamentos, a padronização de papéis de parede e a restrição de segurança avançada, como o bloqueio do PowerShell para usuários comuns.
 
-![GPMC](img/4.1.png)
+![GPMC](https://raw.githubusercontent.com/yshizw/homelab-active-directory/main/img/4.1.png)
 
 ---
 
