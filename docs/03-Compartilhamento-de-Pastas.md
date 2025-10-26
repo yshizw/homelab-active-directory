@@ -30,7 +30,7 @@ O primeiro passo foi criar a estrutura física de diretórios no disco do servid
   - `Financeiro`
     - `Maria Arquivos`
 
-![Estrutura de pastas criada no C:\ do servidor DC01](../img/pastas_clocal.png)
+![Estrutura de pastas criada no C:\ do servidor DC01](../img/pastas_clocal.jpg)
 
 ---
 
@@ -43,7 +43,7 @@ Para as permissões de compartilhamento, foi seguida a melhor prática de segura
 
 Essa abordagem permissiva na camada de compartilhamento simplifica a administração e garante que o controle de acesso granular e efetivo seja gerenciado exclusivamente pela camada NTFS.
 
-![Permissões de Compartilhamento da pasta 'Setores', configurada para 'Authenticated Users'](../img/3.2.png)
+![Permissões de Compartilhamento da pasta 'Setores', configurada para 'Authenticated Users'](../img/3.2.jpg)
 
 ---
 
@@ -54,18 +54,18 @@ Com o compartilhamento configurado, a segurança granular foi aplicada em duas c
 **1. Permissões na Pasta-Pai (O "Corredor"):**
 Primeiro, na pasta-pai `C:\Setores`, as permissões herdadas do disco C:\ foram desabilitadas. As permissões existentes foram convertidas em permissões explícitas para permitir a customização.
 
-![Desabilitando a herança e convertendo as permissões na pasta 'Setores'](../img/3.2_2.png)
+![Desabilitando a herança e convertendo as permissões na pasta 'Setores'](../img/3.2_2.jpg)
 
 Em seguida, as permissões foram limpas: o grupo `Users` foi removido e ao grupo `Authenticated Users` foram concedidas apenas permissões de **`Read & execute`** e **`List folder contents`**. Isso permite que todos os funcionários naveguem pelo "corredor" e vejam as pastas dos departamentos, mas os impede de criar ou excluir qualquer coisa na raiz do compartilhamento.
 
-![Permissões NTFS da pasta-pai 'Setores', permitindo apenas Leitura e Navegação](../img/3.2_3.png)
+![Permissões NTFS da pasta-pai 'Setores', permitindo apenas Leitura e Navegação](../img/3.2_3.jpg)
 
 **2. Permissões na Subpasta (A "Sala do Financeiro"):**
 Finalmente, na subpasta `C:\Setores\Financeiro`, o grupo de segurança específico do departamento, **`Financeiro_SP`**, foi adicionado. A este grupo foi concedida a permissão de **"Modificar" (Modify)**.
 
 Isso garante que, embora todos possam ver a pasta "Financeiro", apenas os membros desse grupo podem entrar nela para criar, ler, editar e excluir arquivos, seguindo o Princípio do Menor Privilégio.
 
-![Aba 'Segurança' comprovando a permissão de 'Modificar' para o grupo Financeiro_SP na pasta Financeiro](../img/folder_permi.png)
+![Aba 'Segurança' comprovando a permissão de 'Modificar' para o grupo Financeiro_SP na pasta Financeiro](../img/folder_permi.jpg)
 
 ---
 
@@ -76,13 +76,13 @@ A etapa final é verificar se as permissões estão funcionando como esperado. P
 **Teste 1: Usuário do RH (`felipe.cardoso`)**
 - Acesso a `\\DC01\Setores\Financeiro`: **FALHA (Acesso Negado)** ❌
 
-![Teste de falha: Acesso negado à pasta Financeiro com o usuário felipe.cardoso](../img/felipe_acesso.png)
+![Teste de falha: Acesso negado à pasta Financeiro com o usuário felipe.cardoso](../img/felipe_acesso.jpg)
 
 **Teste 2: Usuário do Financeiro (`maria.souza`)**
 - Acesso a `\\DC01\Setores\Financeiro`: **SUCESSO** ✅
 
 
-![Teste de sucesso: Acessando a pasta Financeiro com o usuário maria.souza](../img/maria_acesso_s.png)
+![Teste de sucesso: Acessando a pasta Financeiro com o usuário maria.souza](../img/maria_acesso_s.jpg)
 
 ---
 

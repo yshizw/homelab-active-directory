@@ -19,7 +19,7 @@ Durante a configuração do ambiente Active Directory (AD DS) em um homelab, o c
 
 Antes de investigar o servidor, a configuração do cliente foi verificada com ipconfig /all, confirmando que o IP e o servidor DNS estavam corretamente definidos.
 
-![config inicial](../img/ts1.png)
+![config inicial](../img/ts1.jpg)
 
 ---
 
@@ -45,7 +45,7 @@ Servidor: Unknown
 Address: 192.168.50.10
 ```
 
-![nslookup](../img/tss1.png)
+![nslookup](../img/tss1.jpg)
 
 ➡️ Conclusão: o serviço DNS estava inacessível, apesar de o servidor estar respondendo.
 
@@ -65,7 +65,7 @@ Get-Service DNS
 >Running DNS   DNS Server
 >```
 
-![getservice](../img/tss2.png)
+![getservice](../img/tss2.jpg)
 
 ➡️ Conclusão: o serviço DNS estava em execução, então o problema não era o serviço parado.
 
@@ -79,7 +79,7 @@ Verificação com netstat:
 netstat -ano | findstr ":53"
 ```
 
-![netstat](../img/tss3.png)
+![netstat](../img/tss3.jpg)
 
 
 ✅ Resultado: o servidor estava escutando nas portas 53 (TCP e UDP).
@@ -99,7 +99,7 @@ netsh advfirewall firewall add rule name="DNS Inbound TCP" dir=in action=allow p
 ✅ Ambos executaram com sucesso.
 Mesmo assim, o timeout persistia — o que indicava que o problema não estava na camada de rede ou firewall.
 
-![netsh](../img/tss4.png)
+![netsh](../img/tss4.jpg)
 
 ---
 
@@ -125,11 +125,11 @@ Add-DnsServerPrimaryZone -NetworkId "192.168.50.0/24" -ZoneFile "192.168.50.rev"
 
 ✅ Primeira execução: criou com sucesso
 
-![PTR](../img/ts2.png)
+![PTR](../img/ts2.jpg)
 
 ⚠️ Segunda execução: retornou erro ResourceExists, confirmando que a zona já existia.
 
-![PTR pt.2 ](../img/ts3.png)
+![PTR pt.2 ](../img/ts3.jpg)
 
 ---
 
@@ -138,7 +138,7 @@ Add-DnsServerPrimaryZone -NetworkId "192.168.50.0/24" -ZoneFile "192.168.50.rev"
 ```powershell
 Add-DnsServerResourceRecordPtr -Name "10" -ZoneName "50.168.192.in-addr.arpa" -PtrDomainName "dc01.adlab.local"
 ```
-![PTR pt.3 ](../img/ts4.png)
+![PTR pt.3 ](../img/ts4.jpg)
 
 ✅ Primeira execução: criou com sucesso
 
@@ -148,7 +148,7 @@ Add-DnsServerResourceRecordPtr -Name "10" -ZoneName "50.168.192.in-addr.arpa" -P
 
 Antes de testar novamente, o cache DNS do cliente foi limpo:
 
-![Cache ](../img/ts5.png)
+![Cache ](../img/ts5.jpg)
 
 ---
 
@@ -166,7 +166,7 @@ Address:   192.168.50.10
 
 ```
 
-![Resolução](../img/ts6.png)
+![Resolução](../img/ts6.jpg)
 
 O cliente agora reconhecia corretamente o nome e o endereço do servidor DNS.
 

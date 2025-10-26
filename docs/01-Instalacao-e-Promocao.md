@@ -33,7 +33,7 @@ A primeira etapa consistiu em criar a máquina virtual no VMWare Workstation com
 - **Disco Rígido:** 60 GB
 - **Adaptador de Rede:** Rede Interna
 
-![Configuração de hardware da VM no VMWare](../img/config1.png)
+![Configuração de hardware da VM no VMWare](../img/config1.jpg)
 
 
 
@@ -45,13 +45,13 @@ O processo de instalação do sistema operacional foi realizado seguindo o assis
 
 A versão escolhida foi a **Windows Server 2022 Standard (Experiência Desktop)** para ter acesso à interface gráfica de gerenciamento.
 
-![Tela de seleção da imagem ISO do Windows Server](../img/iso.png)
+![Tela de seleção da imagem ISO do Windows Server](../img/iso.jpg)
 
-![Particionamento de disco durante a instalação](../img/aloc.png)
+![Particionamento de disco durante a instalação](../img/aloc.jpg)
 
-![Instalação](../img/inst.png)
+![Instalação](../img/inst.jpg)
 
-![Instalação em andamento](../img/inst2.png)
+![Instalação em andamento](../img/inst2.jpg)
 
 ---
 
@@ -61,7 +61,7 @@ Antes de instalar os serviços de diretório, realizei duas configurações esse
 
 **1. Renomear o Computador:** O nome do servidor foi alterado de um valor aleatório para `DC01`, um nome mais descritivo para sua função.
 
-![Tela mostrando a alteração do nome do computador](../img/nomear.png)
+![Tela mostrando a alteração do nome do computador](../img/nomear.jpg)
 
 **2. Definir um Endereço IP Fixo:** Um IP estático é mandatório para um Controlador de Domínio e servidor DNS. As seguintes configurações foram aplicadas:
 - **Endereço IP:** `192.168.50.10`
@@ -69,7 +69,7 @@ Antes de instalar os serviços de diretório, realizei duas configurações esse
 - **Gateway Padrão:** não configurado / ambiente isolado de laboratório
 - **DNS Preferencial:** `127.0.0.1` 
 
-![Configuração do IP estático nas propriedades de rede](../img/ip.png)
+![Configuração do IP estático nas propriedades de rede](../img/ip.jpg)
 
 ---
 
@@ -77,10 +77,10 @@ Antes de instalar os serviços de diretório, realizei duas configurações esse
 
 Através do **Server Manager**, a função de "Active Directory Domain Services" foi adicionada ao servidor.
 
-![Iniciando o assistente de 'Adicionar Funções e Recursos'](../img/addsinstal.png)
+![Iniciando o assistente de 'Adicionar Funções e Recursos'](../img/addsinstal.jpg)
 
 
-![Confirmação da instalação da role e suas features dependentes](../img/addsinstal2.png)
+![Confirmação da instalação da role e suas features dependentes](../img/addsinstal2.jpg)
 
 ---
 
@@ -102,7 +102,7 @@ Após a reinicialização automática do servidor, verifiquei se os serviços do
 - O **Server Manager** agora exibe as roles de **AD DS** e **DNS** ativas.
 - As ferramentas de gerenciamento do AD (como "Active Directory Users and Computers") estão disponíveis no menu Iniciar.
 
-![Pós promoção](../img/promodc.png)
+![Pós promoção](../img/promodc.jpg)
 
 ---
 
