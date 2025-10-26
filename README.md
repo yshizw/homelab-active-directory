@@ -39,7 +39,7 @@ A seguir estão os resumos de cada etapa. Para um passo a passo detalhado com to
 
 O documento detalha a criação da VM, a instalação do Windows Server 2022 e suas configurações iniciais (IP estático e hostname). Em seguida, a role do Active Directory (AD DS) foi instalada e o servidor foi promovido a Controlador de Domínio, criando a nova floresta adlab.local.
 
-![Promoção a DC](img/promodc.jpg)
+![Promoção a DC](https://raw.githubusercontent.com/yshizw/homelab-active-directory/main/img/promodc.jpg)
 
 ### [3.2. Gerenciamento de Usuários e Grupos 📄➡️](docs/02-Gerenciamento-de-Usuarios.md)
 
